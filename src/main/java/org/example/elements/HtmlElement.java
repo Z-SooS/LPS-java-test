@@ -11,8 +11,7 @@ public abstract class HtmlElement {
     }
 
     public void deleteChild(){
-        child = null;
-//        child = "";
+        child = "";
     }
 
     protected HtmlElement(int depth, Object child, boolean isNewLine) {

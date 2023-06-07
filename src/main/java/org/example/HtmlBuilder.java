@@ -34,8 +34,7 @@ public class HtmlBuilder {
             removeSubElements(element, classType);
         }
 
-        //  null child value means it's empty element and probably no reason to keep if there is no edit function
-        elements = elements.stream().filter(e -> e.getClass() != classType && e.getChild() != null).collect(Collectors.toList());
+        elements = elements.stream().filter(e -> e.getClass() != classType).collect(Collectors.toList());
     }
 
     private void removeSubElements(HtmlElement elementToCheck, Type typeToCheck) {
