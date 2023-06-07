@@ -14,7 +14,7 @@ public interface OutputHandler {
 
     void displayRemoveMenu();
 
-    void successfulRemove(int removedItemNumber);
+    void successfulRemove();
 
     void displayEnterTextMenu();
 

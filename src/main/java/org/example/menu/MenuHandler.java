@@ -120,9 +120,9 @@ public class MenuHandler {
             return;
         }
 
-        int numberOfRemovedItems = builder.removeElement(elementTypeToRemove);
+        builder.removeElement(elementTypeToRemove);
 
-        consoleOutput.successfulRemove(numberOfRemovedItems);
+        consoleOutput.successfulRemove();
     }
 
 

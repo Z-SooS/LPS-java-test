@@ -33,8 +33,8 @@ public class ConsoleOutput implements OutputHandler {
     }
 
     @Override
-    public void successfulRemove(int removedItemNumber) {
-        System.out.printf("\nSuccessfully removed %d items%n", removedItemNumber);
+    public void successfulRemove() {
+        System.out.println("\nSuccessfully removed items");
     }
 
     @Override
