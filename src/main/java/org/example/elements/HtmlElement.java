@@ -6,6 +6,15 @@ public abstract class HtmlElement {
     protected int depth;
     protected Object child;
 
+    public Object getChild() {
+        return child;
+    }
+
+    public void deleteChild(){
+        child = null;
+//        child = "";
+    }
+
     protected HtmlElement(int depth, Object child, boolean isNewLine) {
         this.depth = depth;
         this.child = child;
