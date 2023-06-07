@@ -26,14 +26,33 @@ public class HtmlBuilder {
     }
 
 
-    public int removeElement(ElementType type) {
-        Type elementType = ElementType.getType(type);
+    public void removeElement(ElementType type) {
+        Type classType = ElementType.getType(type);
 
-        int originalAmount = elements.size();
+        // Check child elements
+        for (HtmlElement element : elements) {
+            removeSubElements(element, classType);
+        }
 
-        elements = elements.stream().filter(e -> e.getClass() != elementType).collect(Collectors.toList());
+        //  null child value means it's empty element and probably no reason to keep if there is no edit function
+        elements = elements.stream().filter(e -> e.getClass() != classType && e.getChild() != null).collect(Collectors.toList());
+    }
 
-        return originalAmount - elements.size();
+    private void removeSubElements(HtmlElement elementToCheck, Type typeToCheck) {
+        if(elementToCheck.getChild().getClass() == typeToCheck) {
+            elementToCheck.deleteChild();
+            return;
+        }
+        if(elementToCheck.getChild() instanceof List<?> list) {
+            for (Object o : list) {
+                if(o instanceof HtmlElement asElement) {
+                    if(o.getClass() == typeToCheck) {
+                        elementToCheck.deleteChild();
+                    }
+                    removeSubElements(asElement, typeToCheck);
+                }
+            }
+        }
     }
 
     @Override
